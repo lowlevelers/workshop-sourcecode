@@ -1,11 +1,14 @@
 use core::convert::TryFrom;
 use core::mem;
+use std::fmt::Debug;
 
 pub trait Hasher: Clone {
-    type Hash: Copy + PartialEq + Into<Vec<u8>> + TryFrom<Vec<u8>>;
+    type Hash: Copy + PartialEq + Into<Vec<u8>> + TryFrom<Vec<u8>> + Debug;
 
+    // this method receives bytes => Hash type
     fn hash(data: &[u8]) -> Self::Hash;
 
+    // this method receives 2 Hash type => one Hash type
     fn concat_and_hash(left: &Self::Hash, right: Option<&Self::Hash>) -> Self::Hash {
         let mut concatenated: Vec<u8> = (*left).into();
 
