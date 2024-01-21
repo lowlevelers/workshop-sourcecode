@@ -1,5 +1,5 @@
 [workspace]
-members = ["merkle-tree/"]
+members = [ "advanced-traits","merkle-tree/"]
 
 [profile.release]
 panic = "unwind"
