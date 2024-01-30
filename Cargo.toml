@@ -1,5 +1,5 @@
 [workspace]
-members = [ "advanced-traits","merkle-tree/"]
+members = [ "advanced-traits","merkle-tree/", "rust-state-machine"]
 
 [profile.release]
 panic = "unwind"
