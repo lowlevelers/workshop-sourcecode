@@ -1,5 +1,12 @@
 [workspace]
-members = [ "advanced-traits","merkle-tree/", "rust-state-machine"]
+members = [
+ "advanced-traits",
+ "learn-ink/*",
+ "merkle-tree/",
+ "rust-state-machine/",
+ "learn-ink/psp22_example/",
+ "learn-ink/psp34_marketplace_example/",
+]
 
 [profile.release]
 panic = "unwind"
