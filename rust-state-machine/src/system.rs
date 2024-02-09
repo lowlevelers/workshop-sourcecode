@@ -1,9 +1,9 @@
 use num::{One, Zero};
-use std::{collections::BTreeMap, hash::Hash, ops::AddAssign};
+use std::{collections::BTreeMap, fmt::Debug, hash::Hash, ops::AddAssign};
 
 pub trait Config {
 	type Address: Hash + Clone + Ord;
-	type BlockNumber: Zero + One + AddAssign + Copy;
+	type BlockNumber: Zero + One + AddAssign + Copy + Debug;
 	type Nonce: Zero + One + AddAssign + Copy;
 }
 
@@ -25,15 +25,13 @@ impl<T: Config> Pallet<T> {
 
 	/// Get the current block number.
 	pub fn block_number(&self) -> T::BlockNumber {
-		/* TODO: Return the current block number. */
 		self.block_number
 	}
 
 	// This function can be used to increment the block number.
 	// Increases the block number by one.
 	pub fn inc_block_number(&mut self) {
-		/* TODO: Increment the current block number by one. */
-		self.block_number.add_assign(T::BlockNumber::one());
+		self.block_number += T::BlockNumber::one();
 	}
 
 	// Increment the nonce of an account. This helps us keep track of how many transactions each
